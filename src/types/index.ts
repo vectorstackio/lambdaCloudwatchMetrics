@@ -33,6 +33,7 @@ export type Instance = {
   instanceId: string
   privateIp: string
   name: string
+  instanceType: string
 }
 
 export type HostInstance = Instance & {

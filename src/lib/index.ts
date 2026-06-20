@@ -47,11 +47,12 @@ export async function getRunningInstances(): Promise<Instance[]> {
 
   for (const r of res.Reservations ?? []) {
     for (const i of r.Instances ?? []) {
-      if (!i.InstanceId || !i.PrivateIpAddress) continue
+      if (!i.InstanceType || !i.InstanceId || !i.PrivateIpAddress) continue
 
       instances.push({
         instanceId: i.InstanceId,
         privateIp: i.PrivateIpAddress,
+        instanceType: i.InstanceType,
         name:
           i.Tags?.find(t => t.Key === 'Name')?.Value ??
           i.InstanceId
