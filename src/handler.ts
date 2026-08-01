@@ -1,20 +1,13 @@
 // handler.ts
 
-import {
-  getRunningInstances,
-  fetchMetrics
-} from './lib'
-
-import type {
-  HostInstance,
-} from './types'
+import { getRunningInstances, fetchMetrics } from './lib'
+import type { HostInstance } from './types'
 
 /**
  * -----------------------
  * Lambda handler
  * -----------------------
  */
-
 export const handler = async () => {
   try {
     const instances = await getRunningInstances()
@@ -41,8 +34,6 @@ export const handler = async () => {
       }
     })
 
-    console.log('Returning')
-
     return {
       statusCode: 200,
       headers: {
@@ -61,7 +52,7 @@ export const handler = async () => {
     return {
       statusCode: 500,
       body: JSON.stringify({
-        error: 'Failed to fetch EC2 metrics'
+        error: 'Internal server error in cloudwatchMetrics Lambda'
       })
     }
   }
