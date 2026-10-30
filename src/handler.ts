@@ -46,8 +46,8 @@ export const handler = async () => {
       })
     }
 
-  } catch (err: unknown) {
-    console.error('Lambda error:', err)
+  } catch {
+    console.error('Lambda error')
 
     return {
       statusCode: 500,
